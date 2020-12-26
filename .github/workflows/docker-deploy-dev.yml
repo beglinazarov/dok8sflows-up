@@ -52,3 +52,4 @@ jobs:
           doctl registry login
           docker tag $IMAGE_NAME registry.digitalocean.com/qbx-container-registry/$IMAGE_NAME
           docker push registry.digitalocean.com/qbx-container-registry/$IMAGE_NAME
+          docker run -${secrets.PORT}:80 registry.digitalocean.com/qbx-container-registry/$IMAGE_NAME
