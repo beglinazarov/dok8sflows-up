@@ -3,15 +3,18 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine as build
 
 WORKDIR /src
 
-COPY WebUI.csproj .
+COPY WebUI/WebUI.csproj . 
 RUN dotnet restore
 
-COPY . .
-RUN dotnet build -c Release
 
+COPY . .
+
+WORKDIR /src/WebUI
+
+RUN dotnet build -c Release
 RUN dotnet test
 
-RUN dotnet publish -c Release /dist
+RUN dotnet publish -c Release -o /dist
 
 # prod server
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine
