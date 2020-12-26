@@ -50,5 +50,5 @@ jobs:
       - name: push image to digitalocean
         run: |
           doctl registry login
-          docker tag $IMAGE_NAME registry.digitalocean.com/<My Registry>/$IMAGE_NAME
-          docker push registry.digitalocean.com/<My Registry>/$IMAGE_NAME
+          docker tag $IMAGE_NAME registry.digitalocean.com/qbx-container-registry/$IMAGE_NAME
+          docker push registry.digitalocean.com/qbx-container-registry/$IMAGE_NAME
