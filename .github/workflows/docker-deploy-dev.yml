@@ -57,7 +57,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
-    needs: test,build_and_push
+    needs: build_and_push
 
     steps:
       - name: Deploy to Digital Ocean droplet via SSH action
