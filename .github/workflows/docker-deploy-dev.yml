@@ -69,14 +69,14 @@ jobs:
           envs: IMAGE_NAME,REGISTRY,GITHUB_SHA
           script: |
             # Stop running container
-            sudo docker stop $(echo $IMAGE_NAME)
+            docker stop $(echo $IMAGE_NAME)
 
             # Remove old container
-            sudo docker rm $(echo $IMAGE_NAME)
+            docker rm $(echo $IMAGE_NAME)
 
             # Run a new container from a new image
             doctl registry login --expiry-seconds 600
-            sudo docker run -d \
+            docker run -d \
             --restart always \
             -p 8000:80 \
             --name $(echo $IMAGE_NAME) \
