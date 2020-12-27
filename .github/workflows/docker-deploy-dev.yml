@@ -69,10 +69,10 @@ jobs:
           envs: IMAGE_NAME,REGISTRY,GITHUB_SHA
           script: |
             # Stop running container
-            #docker stop $(echo $IMAGE_NAME)
+            docker stop $(echo $IMAGE_NAME)
 
             # Remove old container
-            #docker rm $(echo $IMAGE_NAME)
+            docker rm $(echo $IMAGE_NAME)
             
             # Checking Doctl connect to docker 
             snap connect doctl:dot-docker
