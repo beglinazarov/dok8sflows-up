@@ -57,7 +57,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
-    needs: build_and_push
+    needs: test build_and_push
 
     steps:
       - name: Deploy to Digital Ocean droplet via SSH action
@@ -66,7 +66,7 @@ jobs:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
           KEY: ${{ secrets.SSHKEY }}
-          envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,COMMAND
+          envs: IMAGE_NAME,REGISTRY,GITHUB_SHA
           script: |
             # Stop running container
             docker stop $(echo $IMAGE_NAME)
